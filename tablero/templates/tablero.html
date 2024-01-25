@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Tablero de Habitaciones {% endblock%}
+
+{% block content %}
+
+<div class='container py-4'> 
+  <div class='row grid gap-5'> 
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+      <div class="text-center">
+        Bienvenido al tablero de habitaciones, aca podras gestionar las habitaciones del hotel.
+        <br>
+        Los botones te permitiran eliminar, crear o editar, segun lo necesites.
+      </div>
+    </div>
+    <h1>Tablero de Habitaciones
+    </h1> 
+  </div>
+<br>
+{% for habitacion in habitacionList %}
+<div class="container">
+  <div class="row text-center">
+    <div class="colspan-2">
+      <div class="card me-auto p-2" style="width: 500px">
+        <div class="card-body ">
+          <h5 class="card-title">Numero: {{ habitacion.numero }}</h5>
+          <p class="card-text">ESTADO: {{ habitacion.estado }}   | TIPO: {{ habitacion.tipo }}</p>
+        </div>
+      </div>
+      <div class=" me-auto p-2" style="width: 500px" role="group" aria-label="Basic mixed styles example">
+      <a href="#" type="button" class="btn btn-danger"> Eliminar <a>
+      <a href="#" type="button" class="btn btn-warning">Editar</a>
+      <a href="#" type="button" class="btn btn-success">Añadir Habitacion</a>
+    </div>
+    </div>
+   
+  </div>
+ 
+</div>
+
+
+
+
+{% endfor %}
+</div>
+
+{% endblock %}
+

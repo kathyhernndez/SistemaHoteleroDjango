@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Panel de Recepcion {% endblock%}
+
+{% block content %}
+
+<div class="container py-4">
+  <div class="row">
+          <div class="table-responsive py-2">
+            <div class="row py-4">
+              <h1>Listado de Reservas 
+                  <a class="btn btn-outline-success" href="/registrarReserva/" role="button">Crear Nueva Reserva</a>            </h1>
+          </div>
+              <table class="table table-striped py-7">
+                  <thead>
+                      <tr>
+                          <th>Referencia</th>
+                          <th>Monto</th>
+                          <th>Pago</th>
+                          <th>Cliente</th>
+                          <th>Cedula</th>
+                          <th>Contacto</th>
+                          <th>Fecha de Registro</th>
+                          <th colspand="2">Opciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for reserva in reservaList %}
+                     <tr>
+                      <td>{{ reserva.code }}</td>
+                      <td>{{ reserva.monto }}</td>
+                      <td>{{ reserva.pago }}</td>
+                      <td>{{ reserva.cliente }}</td>
+                      <td>{{ reserva.cedula }}</td>
+                      <td>{{ reserva.contacto }}</td>
+                      <td>{{ reserva.fechaEntrada}}</td>
+                      <td><a href="#" type="button" class="btn btn-warning">Editar</a></td>
+                      <td><a href="#" type="button" class="btn btn-danger">CheckOut</a></td>
+                     </tr>
+                     {% endfor %}
+                  </tbody>
+                  
+              </table>
+          </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
