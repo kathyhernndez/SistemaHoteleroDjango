@@ -28,12 +28,13 @@ def registrarHabitacion(request):
     estado = request.POST['textEstado']
 
     habitacion = Habitacion.objects.create(tipo=tipo, estado=estado)
-    return redirect('/tablero/formHabitacion')
+    return redirect('appTablero')
+
 
 def eliminarHabitacion(request, numero):
     habitacion = Habitacion.objects.get(numero=numero)
     habitacion.delete()
-    return redirect(request, "formHabitacion.html")
+    return redirect('appTablero')
 
 def editarHabitacion(request, numero):
     habitacion = Habitacion.objects.get(numero=numero)

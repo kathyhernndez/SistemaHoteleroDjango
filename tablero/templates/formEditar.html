@@ -8,7 +8,7 @@
 <div class="container-fluid py-3"> 
     <h2> Editar Habitacion </h2>
 
-    <form action="nuevaHabitacion" method="POST">{% csrf_token %} 
+    <form action="{% url 'editarHabitacion' habitacion.numero %}" method="POST">{% csrf_token %} 
         <div class="input-group mb-3">
             <input type="hidden" name="numero" value="{{habitacio.numero}}">
             <span class="input-group-text" id="basic-addon1">Tipo de Habitacion</span>
