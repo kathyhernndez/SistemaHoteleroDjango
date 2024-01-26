@@ -6,9 +6,11 @@ import pymsgbox
 from django.template import Context
 from recep.models import Habitacion
 from api.views import HabitacionViewSet
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
 def appTablero(request):
     responseHab = requests.get('http://127.0.0.1:8000/api/habitaciones/')
     responseList = responseHab.json()

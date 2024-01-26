@@ -6,8 +6,8 @@
 {% block content %}
 
 <div class="container-fluid py-3"> 
-    <h2> Registrar Nueva Reserva </h2>
-    <form action="nuevaReserva" method="POST">{% csrf_token %} 
+    <h2> Editar Reserva </h2>
+    <form action="{% url 'editarReserva' reserva.code %}" method="POST">{% csrf_token %} 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Recepcionista</span>
             <input type="text" class="form-control" id="userRecep" name="userRecep" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">

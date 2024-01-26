@@ -15,18 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from tablero.views import appTablero
-from recep.views import homeReserva
 from tasks import views
 
 urlpatterns = [
+    ##Vistas predetterminadas de Django
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),
     path('logout/', views.signout, name='logout'),
     path('signin/', views.signin, name='signin'),
-    path('appTablero/', appTablero, name='appTablero'),
-    path('homeReserva/', homeReserva, name='homeReserva'),
+
+    #Modulos creados que pueden usarse en otro proyecto.
+    path('recep/', include('recep.urls')),
+    path('tablero/', include('tablero.urls')),
+
+    #Llamada a la API
     path('api/', include('api.urls')),
 ]
 

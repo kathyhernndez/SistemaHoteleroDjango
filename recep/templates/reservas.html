@@ -10,7 +10,7 @@
           <div class="table-responsive py-2">
             <div class="row py-4">
               <h1>Listado de Reservas 
-                  <a class="btn btn-outline-success" href="/registrarReserva/" role="button">Crear Nueva Reserva</a>            </h1>
+                  <a class="btn btn-outline-success" href="{% url 'registrarReserva' %}" role="button">CheckIn</a>            </h1>
           </div>
               <table class="table table-striped py-7">
                   <thead>
@@ -21,7 +21,10 @@
                           <th>Cliente</th>
                           <th>Cedula</th>
                           <th>Contacto</th>
-                          <th>Fecha de Registro</th>
+                          <th>CheckIn</th>
+                          <th>Usuario</th>
+                          <th>Habitacion</th>
+                          <th>CheckOut</th>
                           <th colspand="2">Opciones</th>
                       </tr>
                   </thead>
@@ -35,8 +38,11 @@
                       <td>{{ reserva.cedula }}</td>
                       <td>{{ reserva.contacto }}</td>
                       <td>{{ reserva.fechaEntrada}}</td>
-                      <td><a href="#" type="button" class="btn btn-warning">Editar</a></td>
-                      <td><a href="#" type="button" class="btn btn-danger">CheckOut</a></td>
+                      <td>{{ reserva.user}}</td>
+                      <td>{{ reserva.habitacion}}</td>
+                      <td>{{ reserva.fechaSalida}}</td>
+                      <td><a href="{% url 'editarReserva' reserva.code %}" type="button" class="btn btn-warning">Editar</a></td>
+                      <td><a href="{% url 'eliminarReserva' reserva.code %}" type="button" class="btn btn-danger">CheckOut</a></td>
                      </tr>
                      {% endfor %}
                   </tbody>

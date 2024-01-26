@@ -19,9 +19,9 @@
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a href="/appTablero" class="nav-link">Habitaciones</a>
+          <a href=" {% url 'appTablero' %} " class="nav-link">Habitaciones</a>
         <li class="nav-item">
-          <a href="{%url 'homeReserva'%}" class="nav-link">Panel de Recepcion</a>
+          <a href="{% url 'homeReserva' %}" class="nav-link">Panel de Recepcion</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Cerrar Sesion</a>

@@ -7,7 +7,7 @@
 
 <div class="container-fluid py-3"> 
     <h2> Registrar Nueva Reserva </h2>
-    <form action="registrarReserva" method="POST">{% csrf_token %} 
+    <form action="{% url 'registrarReserva' %}"  method="POST">{% csrf_token %} 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Recepcionista</span>
             <input type="text" class="form-control" id="userRecep" name="userRecep" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
@@ -17,7 +17,7 @@
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupSelect01">Habitaciones</label>
                 <select class="form-select" id="selectHab" name="selectHab">
-                  <option selected>Datos Habitaciones</option>
+                  <option selected>Seleccionar Habitacion</option>
                   <option value="1">UNO</option>
                   <option value="2">DOS</option>
                   <option value="3">TRES</option>
@@ -27,7 +27,7 @@
           
           <div class="input-group mb-3">
             <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Tipo de Pago</label>
+                <label class="input-group-text" for="inputGroupSelect01">Seleccionar el Tipo de Pago</label>
                 <select class="form-select" id="textPago" name="textPago">
                   <option selected>Pago Movil</option>
                   <option value="Transferencia">Transferencia</option>
