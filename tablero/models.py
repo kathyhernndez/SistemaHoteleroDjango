@@ -1,11 +1,11 @@
 from django.db import models
 
-from .choices import tipos
+from .choices import tipos, estados
 
 class TipoHabitacion(models.Model):
     id = models.AutoField(primary_key=True)
     tipo = models.CharField(max_length=50, choices=tipos, default="Disponible")
-    descripcion = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=2000)
     precio = models.FloatField(max_length=100)
 
     def detallesHabitacion(self):
@@ -22,7 +22,7 @@ class TipoHabitacion(models.Model):
 class Habitacion(models.Model):
     id = models.AutoField(primary_key=True)
     numero = models.IntegerField()
-    estado = models.CharField(max_length=50)
+    estado = models.CharField(max_length=50, choices=estados, default="Disponible")
     id_tipoHabitacion = models.ForeignKey(TipoHabitacion, null=True, blank=True, verbose_name="Tipo de Habitacion", on_delete=models.CASCADE)
 
     def __str__(self):
