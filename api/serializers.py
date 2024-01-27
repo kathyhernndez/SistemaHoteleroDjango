@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from recep.models import Reserva, Cliente, MetodoPago, Ingreso
+from recep.models import Reserva, Cliente
 from tablero.models import Habitacion, TipoHabitacion
 
 ##### serializers de la app recep ############
@@ -12,16 +12,6 @@ class ReservaSerializer(serializers.ModelSerializer):
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = '__all__'
-
-class MetodoPagoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MetodoPago
-        fields = '__all__'
-
-class IngresoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ingreso
         fields = '__all__'
 
 

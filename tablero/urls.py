@@ -9,7 +9,7 @@ urlpatterns = [
      #URL CRUD ACTUALIZAR, LEER, CREAR ELIMINAR,
     path('formHabitacion', views.formHabitacion),
     path('registrarHabitacion/', views.registrarHabitacion, name='registrarHabitacion'),
-    path('eliminarHabitacion/<int:numero>', views.eliminarHabitacion, name='eliminarHabitacion'),
-    path('editarHabitacion/<int:numero>', views.editarHabitacion, name='editarHabitacion'),
+    path('eliminarHabitacion/<int:id>', views.eliminarHabitacion, name='eliminarHabitacion'),
+    path('editarHabitacion/<int:id>', views.editarHabitacion, name='editarHabitacion'),
     path('nuevaHabitacion/', views.nuevaHabitacion, name='nuevaHabitacion'),
 ]

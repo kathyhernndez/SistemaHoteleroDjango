@@ -8,8 +8,8 @@ urlpatterns = [
 
     #URL CRUD ACTUALIZAR, LEER, CREAR ELIMINAR,
     path('registrarReserva/', views.registrarReserva, name='registrarReserva'),
-    path('eliminarReserva/<int:code>', views.eliminarReserva, name='eliminarReserva'),
-    path('editarReserva/<int:code>', views.editarReserva, name='editarReserva'),
+    path('eliminarReserva/<int:id>', views.eliminarReserva, name='eliminarReserva'),
+    path('editarReserva/<int:id>', views.editarReserva, name='editarReserva'),
     path('nuevaReserva/', views.nuevaReserva),
    
 ]

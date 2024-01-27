@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from recep.models import Reserva,  Cliente, MetodoPago, Ingreso
+from recep.models import Reserva,  Cliente
 from tablero.models import Habitacion, TipoHabitacion
-from api.serializers import ReservaSerializer, HabitacionSerializer, ClienteSerializer, MetodoPagoSerializer, IngresoSerializer, TipoHabitacionSerializer
+from api.serializers import ReservaSerializer, HabitacionSerializer, ClienteSerializer, TipoHabitacionSerializer
 
 
 class ReservaViewSet(viewsets.ModelViewSet):
@@ -12,13 +12,6 @@ class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
-class MetodoPagoViewSet(viewsets.ModelViewSet):
-    queryset = MetodoPago.objects.all()
-    serializer_class = MetodoPagoSerializer
-
-class IngresoViewSet(viewsets.ModelViewSet):
-    queryset = Ingreso.objects.all()
-    serializer_class = IngresoSerializer
 
 class HabitacionViewSet(viewsets.ModelViewSet):
     queryset = Habitacion.objects.all()

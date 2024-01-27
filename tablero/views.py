@@ -31,8 +31,8 @@ def registrarHabitacion(request):
     return redirect('appTablero')
 
 
-def eliminarHabitacion(request, numero):
-    habitacion = Habitacion.objects.get(numero=numero)
+def eliminarHabitacion(request, id):
+    habitacion = Habitacion.objects.get(id=id)
     habitacion.delete()
     return redirect('appTablero')
 

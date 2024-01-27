@@ -31,18 +31,18 @@
                   <tbody>
                     {% for reserva in reservaList %}
                      <tr>
-                      <td>{{ reserva.code }}</td>
-                      <td>{{ reserva.monto }}</td>
-                      <td>{{ reserva.pago }}</td>
-                      <td>{{ reserva.cliente }}</td>
-                      <td>{{ reserva.cedula }}</td>
-                      <td>{{ reserva.contacto }}</td>
-                      <td>{{ reserva.fechaEntrada}}</td>
+                      <td>{{ reserva.factura }}</td>
+                      <td>{{ reserva.fechaEntrada }}</td>
+                      <td>{{ reserva.fechaSalida }}</td>
+                      <td>{{ reserva.estadoReserva }}</td>
                       <td>{{ reserva.user}}</td>
                       <td>{{ reserva.habitacion}}</td>
-                      <td>{{ reserva.fechaSalida}}</td>
-                      <td><a href="{% url 'editarReserva' reserva.code %}" type="button" class="btn btn-warning">Editar</a></td>
-                      <td><a href="{% url 'eliminarReserva' reserva.code %}" type="button" class="btn btn-danger">CheckOut</a></td>
+                      <td>{{ reserva.importe}}</td>
+                      <td>{{ reserva.metodoPago}}</td>
+                      <td>{{ reserva.moneda}}</td>
+                      <td>{{ reserva.cliente}}</td>
+                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning">Editar</a></td>
+                      <td><a href="{% url 'eliminarReserva' reserva.id %}" type="button" class="btn btn-danger">CheckOut</a></td>
                      </tr>
                      {% endfor %}
                   </tbody>

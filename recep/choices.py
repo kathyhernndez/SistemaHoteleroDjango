@@ -1,26 +1,26 @@
-tipos = (
-    ('D', 'Divisas'),
-    ('PM', 'Pago Movil'),
-    ('T', 'Transferencia'),
-    ('B', 'Binance'),
-    ('Z', 'Zinli'),
-    ('PY', 'Paypal'),
-    ('PDV', 'Punto de Venta'),
-    ('TC', 'Tarjeta de Credito'),
-    ('BP', 'Biopago'),
+metodoPago = (
+    ('Divisas', 'Divisas'),
+    ('Pago Movil', 'Pago Movil'),
+    ('Transferencia', 'Transferencia'),
+    ('Binance', 'Binance'),
+    ('Zinli', 'Zinli'),
+    ('Paypal', 'Paypal'),
+    ('Punto de Venta', 'Punto de Venta'),
+    ('Tarjeta de Credito', 'Tarjeta de Credito'),
+    ('Biopago', 'Biopago'),
 )
 
 monedas = (
-    ('D', 'Dolares'),
-    ('BS', 'Bolivares'),
-    ('PCO', 'Pesos CO'),
-    ('US', 'USDT'),
-    ('BT', 'BTC')
+    ('Dolares', 'Dolares'),
+    ('Bolivares', 'Bolivares'),
+    ('Pesos CO', 'Pesos CO'),
+    ('USDT', 'USDT'),
+    ('BTC', 'BTC')
 )
 
 estados = (
-    ('D', 'Pagada'),
-    ('BS', 'Cancelada'),
-    ('PCO', 'Por Pagar'),
-    ('US', 'Reservada')
+    ('Pagada', 'Pagada'),
+    ('Cancelada', 'Cancelada'),
+    ('Por Pagar', 'Por Pagar'),
+    ('Reservada', 'Reservada')
 )
