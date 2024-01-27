@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hotel_bd',
+        'NAME': 'sistemaHotel',
         'USER': 'postgres',
         'PASSWORD': '123456789',
         'HOST': 'localhost',
