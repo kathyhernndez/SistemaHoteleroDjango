@@ -23,7 +23,6 @@ class Reserva(models.Model):
     id = models.AutoField(primary_key=True)
     fechaEntrada = models.DateTimeField(auto_now_add=True, verbose_name="CheckIn")
     fechaSalida = models.DateTimeField(null=True, blank=True, verbose_name="CheckOut")
-    estadoReserva = models.CharField(max_length=50, choices=estados, default="Pagada")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
     importe = models.FloatField(max_length=50)

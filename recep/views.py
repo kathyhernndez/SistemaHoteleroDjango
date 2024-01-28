@@ -23,13 +23,13 @@ def registrarReserva(request):
     form = ReservaForm()
     return render(request, 'formReserva.html', {'form': form})
     
-
+@login_required
 def eliminarReserva(request, code):
     reserva = Reserva.objects.get(code=code)
     reserva.delete()
     return redirect('homeReserva')
 
-
+@login_required
 def editarReserva(request, id):
     reserva = Reserva.objects.get(id=id)
     data = {
@@ -37,7 +37,8 @@ def editarReserva(request, id):
         'reserva' : reserva
     }
     return render(request,'editarReserva.html', data)
-
+    
+@login_required
 def nuevaReserva(request):
     monto = request.POST['numMonto']
     pago = request.POST['textPago']

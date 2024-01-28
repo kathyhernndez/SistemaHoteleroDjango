@@ -17,10 +17,3 @@ monedas = (
     ('USDT', 'USDT'),
     ('BTC', 'BTC')
 )
-
-estados = (
-    ('Pagada', 'Pagada'),
-    ('Cancelada', 'Cancelada'),
-    ('Por Pagar', 'Por Pagar'),
-    ('Reservada', 'Reservada')
-)

@@ -6,7 +6,7 @@ class TipoHabitacion(models.Model):
     id = models.AutoField(primary_key=True)
     tipo = models.CharField(max_length=50, choices=tipos, default="Doble Individual")
     descripcion = models.CharField(max_length=2000)
-    precio = models.FloatField(max_length=100)
+    precio = models.FloatField(max_length=20)
 
     def detallesHabitacion(self):
         return "{}, Precio: {}".format(self.tipo, self.precio)
@@ -26,7 +26,7 @@ class Habitacion(models.Model):
     id_tipoHabitacion = models.ForeignKey(TipoHabitacion, null=True, blank=True, verbose_name="Tipo de Habitacion", on_delete=models.CASCADE)
 
     def __str__(self):
-        txt = "Habitacion {0}, Numero: {1}, Estado: {2}"
+        txt = "Tipo: {0}, Numero: {1}, Estado: {2}"
         return txt.format( self.id_tipoHabitacion, self.numero, self.estado)
 
     class Meta:
