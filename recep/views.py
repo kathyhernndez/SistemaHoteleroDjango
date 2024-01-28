@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import Context
 from .models import Reserva
 from api.views import ReservaViewSet
-from .forms import reservaForm
+from .forms import ReservaForm
 
 
 # Create your views here.
@@ -20,17 +20,8 @@ def homeReserva(request):
 
 @login_required
 def registrarReserva(request):
-    if request.method == "GET":
-        return render(request, 'formReserva.html', {"form": reservaForm})
-    else:
-        try:
-            form = reservaForm(request.POST)
-            nueva_reserva = form.save(commit=False)
-            nueva_reserva.user = request.user
-            nueva_reserva.save()
-            return redirect('homeReserva')
-        except ValueError:
-            return render(request, 'formReserva.html', {"form": reservaForm, "error": "Error Creando Reserva."})
+    form = ReservaForm()
+    return render(request, 'formReserva.html', {'form': form})
     
 
 def eliminarReserva(request, code):

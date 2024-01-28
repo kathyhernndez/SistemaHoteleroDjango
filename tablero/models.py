@@ -9,7 +9,7 @@ class TipoHabitacion(models.Model):
     precio = models.FloatField(max_length=100)
 
     def detallesHabitacion(self):
-        return "{}, {}, {}".format(self.tipo, self.descripcion, self.precio)
+        return "{}, Precio: {}".format(self.tipo, self.precio)
 
     def __str__(self):
         return self.detallesHabitacion()

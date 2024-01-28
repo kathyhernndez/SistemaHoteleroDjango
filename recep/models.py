@@ -15,13 +15,12 @@ class Cliente(models.Model):
     correo = models.CharField(max_length=100)
 
     def __str__(self):
-        txt = "{0} {1}, Cedula{2}, Telefono: {3}, Correo: {4}"
-        return txt.format(self.nombre, self.apellido, self.cedula, self.telefono, self.correo)
+        txt = "{0} {1}, Cedula{2}"
+        return txt.format(self.nombre, self.apellido, self.cedula)
 
 
 class Reserva(models.Model):
     id = models.AutoField(primary_key=True)
-    factura = models.CharField()
     fechaEntrada = models.DateTimeField(auto_now_add=True, verbose_name="CheckIn")
     fechaSalida = models.DateTimeField(null=True, blank=True, verbose_name="CheckOut")
     estadoReserva = models.CharField(max_length=50, choices=estados, default="Pagada")
