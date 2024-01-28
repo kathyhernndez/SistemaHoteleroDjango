@@ -41,6 +41,8 @@ def registrarReserva(request):
             reserva.user = form.cleaned_data['user']
 
             reserva.save()
+
+            return redirect('homeReserva')
     
         else:
             print("Invalido")
@@ -72,13 +74,13 @@ def editarReserva(request, pk):
             reserva.user = form.cleaned_data['user']
 
             reserva.save()
+
+            return redirect('homeReserva')
     
         else:
             print("Invalido")
         
     return render(request, 'formReserva.html', {'form': form})
-
-
 
 
 

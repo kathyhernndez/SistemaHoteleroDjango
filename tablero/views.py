@@ -7,6 +7,7 @@ from django.template import Context
 from recep.models import Habitacion
 from api.views import HabitacionViewSet
 from django.contrib.auth.decorators import login_required
+from .forms import HabitacionForm
 
 # Create your views here.
 
@@ -19,16 +20,59 @@ def appTablero(request):
     
     return render(request,"tablero.html", contexto)
 
-def formHabitacion(request):
-    pass
-    return render(request, "formHabitacion.html")
 
+@login_required
 def registrarHabitacion(request):
-    tipo = request.POST['texTipo']
-    estado = request.POST['textEstado']
+    form = HabitacionForm()
 
-    habitacion = Habitacion.objects.create(tipo=tipo, estado=estado)
-    return redirect('appTablero')
+    if request.method == "POST":
+        print(request.POST)
+        form = HabitacionForm(request.POST) 
+
+        if form.is_valid():
+            print("Valido")
+            
+            habitacion = Habitacion()
+
+            habitacion.numero = form.cleaned_data['numero']
+            habitacion.estado = form.cleaned_data['estado']
+            habitacion.id_tipoHabitacion = form.cleaned_data['id_tipoHabitacion']
+
+            habitacion.save()
+    
+        else:
+            print("Invalido")
+
+    return render(request, 'formHabitacion.html', {'form': form})
+
+
+
+@login_required
+def editarHabitacion(request, pk):
+    
+    habitacion = get_object_or_404(Habitacion, id=pk)
+
+    form = HabitacionForm(initial={'numero':habitacion.numero,'estado':habitacion.estado, 'id_tipoHabitacion': habitacion.id_tipoHabitacion})
+
+    if request.method == "POST":
+        print(request.POST)
+        form = HabitacionForm(request.POST) 
+
+        if form.is_valid():
+            print("Valido")
+
+            habitacion.numero = form.cleaned_data['numero']
+            habitacion.estado = form.cleaned_data['estado']
+            habitacion.id_tipoHabitacion = form.cleaned_data['id_tipoHabitacion']
+
+            habitacion.save()
+            return redirect('appTablero')
+    
+        else:
+            print("Invalido")
+        
+    return render(request, 'formHabitacion.html', {'form': form})
+
 
 
 def eliminarHabitacion(request, id):
@@ -36,22 +80,3 @@ def eliminarHabitacion(request, id):
     habitacion.delete()
     return redirect('appTablero')
 
-def editarHabitacion(request, numero):
-    habitacion = Habitacion.objects.get(numero=numero)
-    data = {
-        'titulo': 'Edicion de Habitaciones',
-        'habitacion' : habitacion
-    }
-    return render(request,"formEditar.html", data)
-
-def nuevaHabitacion(request):
-    numero = request.POST['numero']
-    tipo = request.POST['texTipo']
-    estado = request.POST['textEstado']
-
-    habitacion = Habitacion.objects.get(numero=numero)
-    habitacion.tipo = tipo
-    habitacion.estado = estado
-    habitacion.save()
-
-    return redirect(appTablero)

@@ -4,7 +4,7 @@ from .choices import tipos, estados
 
 class TipoHabitacion(models.Model):
     id = models.AutoField(primary_key=True)
-    tipo = models.CharField(max_length=50, choices=tipos, default="Doble Individual")
+    tipo = models.CharField(max_length=50, choices=tipos, unique=True, default="Doble Individual")
     descripcion = models.CharField(max_length=2000)
     precio = models.FloatField(max_length=20)
 
@@ -21,7 +21,7 @@ class TipoHabitacion(models.Model):
 
 class Habitacion(models.Model):
     id = models.AutoField(primary_key=True)
-    numero = models.IntegerField()
+    numero = models.IntegerField(max_length=4, unique=True)
     estado = models.CharField(max_length=50, choices=estados, default="Disponible")
     id_tipoHabitacion = models.ForeignKey(TipoHabitacion, null=True, blank=True, verbose_name="Tipo de Habitacion", on_delete=models.CASCADE)
 

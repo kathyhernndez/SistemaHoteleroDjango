@@ -16,7 +16,6 @@
                   <thead>
                       <tr>
                           <th>CheckIn</th>
-                          <th>CheckOut</th>
                           <th>Usuario</th>
                           <th>Habitacion</th>
                           <th>Importe</th>
@@ -30,7 +29,6 @@
                     {% for reserva in reservaList %}
                      <tr>
                       <td>{{ reserva.fechaEntrada }}</td>
-                      <td>{{ reserva.fechaSalida }}</td>
                       <td>{{ reserva.user}}</td>
                       <td>{{ reserva.habitacion}}</td>
                       <td>{{ reserva.importe}}</td>

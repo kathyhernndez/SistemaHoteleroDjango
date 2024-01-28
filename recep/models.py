@@ -8,14 +8,14 @@ from .choices import *
 
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
-    cedula = models.CharField(max_length=50)
+    cedula = models.CharField(max_length=50, unique=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     telefono = models.CharField(max_length=50)
     correo = models.CharField(max_length=100)
 
     def __str__(self):
-        txt = "{0} {1}, Cedula{2}"
+        txt = "{0} {1}, Cedula: V-{2}"
         return txt.format(self.nombre, self.apellido, self.cedula)
 
 

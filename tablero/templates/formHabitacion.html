@@ -8,29 +8,12 @@
 <div class="container-fluid py-3"> 
     <h2> {% if numero %} Editar {% else %} Registrar {% endif %} Habitacion </h2>
 
-    <form action="{% url 'registrarHabitacion' %}" method="POST">{% csrf_token %} 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Tipo de Habitacion</span>
-            <input type="text" class="form-control" id="texTipo" name="" placeholder="Tipo de Habitacion" aria-label="Username" aria-describedby="basic-addon1">
-          </div>
-
-          <div class="input-group mb-3">
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Estado</label>
-                <select class="form-select" id="textEstado" name="textEstado">
-                  <option selected>Disponible</option>
-                  <option value="Ocupado">Ocupado</option>
-                  <option value="Reservado">Reservado</option>
-                  <option value="Mantenimiento">Mantenimiento</option>
-                </select>
-              </div>
-          </div>
-          <br>
-          
-         
-          <div clas="form-group py-50">
+    <form action="" method="POST">{% csrf_token %} 
+      
+      {{ form }}
+      
             <button type="submit" id="liveAlertBtn" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
-            <a type="button" href="http://127.0.0.1:8000/tablero/appTablero" class="btn btn-outline-success btn-block text-bg-black">Cancelar</a>
+            <a type="button" href="http://127.0.0.1:8000/tablero/appTablero" class="btn btn-outline-success btn-block text-bg-black">Regresar</a>
           </div>
 
     </form>

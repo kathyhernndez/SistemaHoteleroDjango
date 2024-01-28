@@ -1,17 +1,14 @@
 from django.urls import path
 from . import views
-from .views import appTablero, formHabitacion, registrarHabitacion, eliminarHabitacion, editarHabitacion, nuevaHabitacion
+from .views import appTablero, registrarHabitacion, eliminarHabitacion, editarHabitacion
 
 urlpatterns = [
     ## URLS DE PANEL DE HABITACIONES
     path('appTablero/', views.appTablero, name='appTablero'),
 
      #URL CRUD ACTUALIZAR, LEER, CREAR ELIMINAR,
-    path('formHabitacion', views.formHabitacion),
     path('registrarHabitacion/', views.registrarHabitacion, name='registrarHabitacion'),
     path('eliminarHabitacion/<int:id>', views.eliminarHabitacion, name='eliminarHabitacion'),
-    path('editarHabitacion/<int:id>', views.editarHabitacion, name='editarHabitacion'),
-    path('nuevaHabitacion/', views.nuevaHabitacion, name='nuevaHabitacion'),
-    
+    path('editarHabitacion/<int:pk>', views.editarHabitacion, name='editarHabitacion'),    
 ]
 
