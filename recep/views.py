@@ -39,8 +39,8 @@ def eliminarReserva(request, code):
     return redirect('homeReserva')
 
 
-def editarReserva(request, code):
-    reserva = Reserva.objects.get(code=code)
+def editarReserva(request, id):
+    reserva = Reserva.objects.get(id=id)
     data = {
         'titulo': 'Edicion de reservas',
         'reserva' : reserva
@@ -54,7 +54,7 @@ def nuevaReserva(request):
     cedula = request.POST['numCedula']
     contacto = request.POST['numContacto']
 
-    reserva = Reserva.objects.get(code=code)
+    reserva = Reserva.objects.get(id=id)
     reserva.monto = monto
     reserva.pago = pago
     reserva.cliente = cliente
