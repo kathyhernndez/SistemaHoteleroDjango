@@ -25,6 +25,9 @@ urlpatterns = [
     path('logout/', views.signout, name='logout'),
     path('signin/', views.signin, name='signin'),
 
+    ##Admin
+    path('administracion/', views.administracion, name='administracion'),
+
     #Modulos creados que pueden usarse en otro proyecto.
     path('recep/', include('recep.urls')),
     path('tablero/', include('tablero.urls')),

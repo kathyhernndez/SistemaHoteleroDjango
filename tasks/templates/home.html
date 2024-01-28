@@ -1,16 +1,50 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="container fieldBox">
+{% block title %} Inicio {% endblock%}
 
-<br>
-<br>
-<br>
-<br>
-  <h1>¡Bienvenidos al Sistema de Gestion Hotelera!</h1>
-<br>
-<br>
-<br>
-<br>
-</div>
+
+{% block content %}
+
+
+<div class="popover-title"> 
+      
+
+
+      {% if user.is_authenticated %}
+
+      <div class="container-fluid py-5">
+        <div class="d-grid gap-2 col-6 mx-auto py-5">
+        <h2 class="text-center">¡Bienvenido al Sistema Recepción Hotelera!</h2>
+        <br>
+        <h4 class="text-center">Comienza a trabajar ahora<h4>
+        </div>
+  
+        <div class="d-grid gap-2 col-6 mx-auto ">
+          <button class="btn btn-success" type="button"> <a href="{% url 'homeReserva' %}" class="nav-link">Gestiona las Reservas</a></button>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto py-3">
+          <button class="btn btn-primary" type="button"> <a href="{% url 'appTablero' %}" class="nav-link">Visualiza las Habitaciones</a></button>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto ">
+          <button class="btn btn-warning" type="button"> <a href="{% url 'administracion' %}" class="nav-link">Administra a los Usuarios</a></button>
+        </div>
+      </div>
+
+      {% else %}
+      <div class="container-fluid py-5">
+      <div class="d-grid gap-2 col-6 mx-auto py-5">
+      <h2 class="text-center">¡Bienvenido al Sistema Recepción Hotelera!</h2>
+      <br>
+      <h4 class="text-center">Inicia Sesion para comenzar a trabajar.<h4>
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto ">
+        <button class="btn btn-primary" type="button"> <a href="/signin" class="nav-link">Iniciar Sesión</a></button>
+      </div>
+    </div>
+    
+      {% endif %}
+      
+<div>
 
 {% endblock %}

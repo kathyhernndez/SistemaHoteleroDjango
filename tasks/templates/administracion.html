@@ -7,7 +7,7 @@
     <div class="table-responsive py-2">
         <div class="row py-4">
             <h1>Listado de Usuarios 
-              <a class="btn btn-outline-success" href="http://127.0.0.1:8000/administrador/formUsuarios" role="button">Registrar un Nuevo Usuario</a>
+              <a class="btn btn-outline-success" href="/signup" role="button">Registrar un Nuevo Usuario</a>
           </h1>
         </div>
           <table class="table table-striped py-7">
@@ -22,18 +22,15 @@
                   </tr>
               </thead>
               <tbody>
-                {% for usuario in usuarioList %}
-                 <tr>
-                  <td>{{ usuario.usernom }}</td>
-                  <td>{{ usuario.email }}</td>
-                  <td>{{ usuario.nombre }}</td>
-                  <td>{{ usuario.apellido }}</td>
-                  <td>{{ usuario.cedula }}</td>
-                  <td>{{ usuario.cargo }}</td>
-                  <td><a href="reservarHabitacion/{{reservar.code}}" type="button" class="btn btn-warning">Editar</a></td>
-                  <td><a href="checkOut/{{reservar.code}}" type="button" class="btn btn-danger">Eliminar</a></td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                  <td><a href="reservarHabitacion/{{reservar.id}}" type="button" class="btn btn-warning">Editar</a></td>
+                  <td><a href="checkOut/{{reservar.id}}" type="button" class="btn btn-danger">Eliminar</a></td>
                  </tr>
-                 {% endfor %}
+                 
               </tbody>
           </table>
       </div>

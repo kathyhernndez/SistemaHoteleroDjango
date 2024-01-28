@@ -14,24 +14,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a href="/" class="nav-link">Inicio</a>
-        </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a href=" {% url 'appTablero' %} " class="nav-link">Habitaciones</a>
+          <a href=" {% url 'appTablero' %} " class="nav-link">Panel de Habitaciones</a>
         <li class="nav-item">
           <a href="{% url 'homeReserva' %}" class="nav-link">Panel de Recepcion</a>
         </li>
         <li class="nav-item">
+          <a href="{% url 'administracion' %}" class="nav-link">Panel de Administracion</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/logout">Cerrar Sesion</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a href="/signin" class="nav-link">Iniciar Sesion</a>
-        </li>
-        <li class="nav-item">
-          <a href="/signup" class="nav-link">Registro</a>
         </li>
         {% endif %}
       </ul>

@@ -41,7 +41,7 @@
                       <td>{{ reserva.metodoPago}}</td>
                       <td>{{ reserva.moneda}}</td>
                       <td>{{ reserva.cliente}}</td>
-                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning">Editar</a></td>
+                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning">Actualizar</a></td>
                       <td><a href="{% url 'eliminarReserva' reserva.id %}" type="button" class="btn btn-danger">CheckOut</a></td>
                      </tr>
                      {% endfor %}
