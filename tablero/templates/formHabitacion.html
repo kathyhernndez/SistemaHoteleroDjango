@@ -6,15 +6,18 @@
 {% block content %}
 
 <div class="container-fluid py-3"> 
-    <h2> {% if numero %} Editar {% else %} Registrar {% endif %} Habitacion </h2>
+    <h2> Datos de Habitacion </h2>
 
     <form action="" method="POST">{% csrf_token %} 
       
       {{ form }}
-      
-            <button type="submit" id="liveAlertBtn" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
-            <a type="button" href="http://127.0.0.1:8000/tablero/appTablero" class="btn btn-outline-success btn-block text-bg-black">Regresar</a>
+            <div class="container-fluid py-2">
+              <button type="submit" id="liveAlertBtn" class="btn btn-outline-success btn-block text-bg-black">Crear Habitacion</button>
+            <a type="button" href="http://127.0.0.1:8000/tablero/appTablero" class="btn btn-outline-success btn-block text-bg-black">Regresar al Tablero</a>
+            <a type="button" href="{% url 'crearTipo' %}" class="btn btn-outline-success btn-block text-bg-black">Añadir Tipo de Habitacion </a>
+            </div>
           </div>
+          
 
     </form>
 

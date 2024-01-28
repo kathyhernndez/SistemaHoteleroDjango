@@ -12,8 +12,10 @@
       {{ form }}
         
           <div clas="form-group">
-            <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
-            <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar</a>
+            <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar</button>
+            <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
+            <td><a href="{% url 'registrarCliente' %}" type="button" class="btn btn-danger">Registrar Cliente</a></td>
+
           </div>
 
     </form>

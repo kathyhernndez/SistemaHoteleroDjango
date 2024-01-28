@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import Context
 from .models import Reserva
 from api.views import ReservaViewSet
-from .forms import ReservaForm
+from .forms import ReservaForm, ClienteForm
 
 
 # Create your views here.
@@ -90,3 +90,28 @@ def eliminarReserva(request, id):
     reserva.delete()
     return redirect('homeReserva')
 
+@login_required
+def registrarCliente(request):
+    form = ClienteForm()
+
+    if request.method == "POST":
+        print(request.POST)
+        form = ClienteForm(request.POST) 
+
+        if form.is_valid():
+            print("Valido")
+            
+            cliente = Cliente()
+
+            cliente.cedula = form.cleaned_data['cedula']
+            cliente.nombre = form.cleaned_data['nombre']
+            cliente.apellido = form.cleaned_data['apellido']
+            cliente.telefono = form.cleaned_data['telefono']
+            cliente.correo = form.cleaned_data['correo']
+
+            cliente.save()
+    
+        else:
+            print("Invalido")
+
+    return render(request, 'formReserva.html', {'form': form})

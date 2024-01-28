@@ -7,7 +7,7 @@ from django.template import Context
 from recep.models import Habitacion
 from api.views import HabitacionViewSet
 from django.contrib.auth.decorators import login_required
-from .forms import HabitacionForm
+from .forms import *
 
 # Create your views here.
 
@@ -80,3 +80,26 @@ def eliminarHabitacion(request, id):
     habitacion.delete()
     return redirect('appTablero')
 
+@login_required
+def crearTipo(request):
+    form = TipoHabitacionForm()
+
+    if request.method == "POST":
+        print(request.POST)
+        form = TipoHabitacionForm(request.POST) 
+
+        if form.is_valid():
+            print("Valido")
+            
+            tipoHabitacion = TipoHabitacion()
+
+            tipoHabitacion.tipo = form.cleaned_data['tipo']
+            tipoHabitacion.precio = form.cleaned_data['precio']
+            tipoHabitacion.descripcion = form.cleaned_data['descripcion']
+
+            tipoHabitacion.save()
+    
+        else:
+            print("Invalido")
+
+    return render(request, 'formHabitacion.html', {'form': form})

@@ -10,3 +10,9 @@ class ReservaForm(forms.Form):
    cliente = forms.ModelChoiceField(label="Cliente", queryset=Cliente.objects.all(), required=True)
    user = forms.ModelChoiceField(label="Usuario", queryset=User.objects.all(), required=True)
 
+class ClienteForm(forms.Form):
+   cedula = forms.CharField(label="Cedula", required=True)
+   nombre = forms.CharField(label="Nombre", required=True)
+   apellido = forms.CharField(label="Apellido", required=True)
+   telefono = forms.CharField(label="Telefono", required=True)
+   correo = forms.CharField(label="Telefono", required=True)
