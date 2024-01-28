@@ -24,13 +24,30 @@ def registrarReserva(request):
 
     if request.method == "POST":
         print(request.POST)
+        form = ReservaForm(request.POST) 
+
+        if form.is_valid():
+            print("Valido")
+            
+            reserva = Reserva()
+
+            reserva.habitacion = form.cleaned_data['habitacion']
+            reserva.importe = form.cleaned_data['importe']
+            reserva.monedas = form.cleaned_data['monedas']
+            reserva.metodoPago = form.cleaned_data['metodoPago']
+            reserva.cliente = form.cleaned_data['cliente']
+            reserva.user = form.cleaned_data['user']
+
+            reserva.save()
     
+        else:
+            print("Invalido")
 
     return render(request, 'formReserva.html', {'form': form})
     
 @login_required
-def eliminarReserva(request, code):
-    reserva = Reserva.objects.get(code=code)
+def eliminarReserva(request, id):
+    reserva = Reserva.objects.get(id=id)
     reserva.delete()
     return redirect('homeReserva')
 
