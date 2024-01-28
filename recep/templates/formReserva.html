@@ -7,7 +7,8 @@
 
 <div class="container-fluid py-3"> 
     <h2> Registrar Nueva Reserva </h2>
-    <form action="{% url 'registrarReserva' %}"  method="POST">{% csrf_token %} 
+    <form action="{% url 'registrarReserva' %}" method="POST">
+      {% csrf_token %} 
 
       {{ form }}
         

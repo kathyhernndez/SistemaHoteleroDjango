@@ -21,6 +21,11 @@ def homeReserva(request):
 @login_required
 def registrarReserva(request):
     form = ReservaForm()
+
+    if request.method == "POST":
+        print(request.POST)
+    
+
     return render(request, 'formReserva.html', {'form': form})
     
 @login_required
