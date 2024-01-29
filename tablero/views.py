@@ -98,8 +98,9 @@ def crearTipo(request):
             tipoHabitacion.descripcion = form.cleaned_data['descripcion']
 
             tipoHabitacion.save()
+            return redirect('registrarHabitacion')
     
         else:
             print("Invalido")
 
-    return render(request, 'formHabitacion.html', {'form': form})
+    return render(request, 'tipoforms.html', {'form': form})

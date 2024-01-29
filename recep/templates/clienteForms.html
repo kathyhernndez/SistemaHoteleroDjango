@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Reistrar Cliente {% endblock%}
+
+{% block content %}
+
+<div class="container-fluid mx-2 py-3"> 
+
+<div>
+  <h2> Registro de Cliente </h2>
+</div>
+  
+    <form class="container-fluid py-5 form-group-lg" action="{% url 'registrarCliente' %}" method="POST">
+      {% csrf_token %} 
+
+      {{ form }}
+        
+    </form>
+    <div clas="form-group mx-2 py-0">
+      <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
+      <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar</button>
+    </div>
+</div>
+
+{% endblock %}

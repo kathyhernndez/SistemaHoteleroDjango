@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_list_or_404, get_object_or_40
 import requests
 from django.contrib.auth.decorators import login_required
 from django.template import Context
-from .models import Reserva
+from .models import Reserva, Cliente
 from api.views import ReservaViewSet
 from .forms import ReservaForm, ClienteForm
 
@@ -41,9 +41,8 @@ def registrarReserva(request):
             reserva.user = form.cleaned_data['user']
 
             reserva.save()
-
             return redirect('homeReserva')
-    
+
         else:
             print("Invalido")
 
@@ -74,9 +73,8 @@ def editarReserva(request, pk):
             reserva.user = form.cleaned_data['user']
 
             reserva.save()
-
             return redirect('homeReserva')
-    
+            
         else:
             print("Invalido")
         
@@ -89,6 +87,8 @@ def eliminarReserva(request, id):
     reserva = Reserva.objects.get(id=id)
     reserva.delete()
     return redirect('homeReserva')
+
+
 
 @login_required
 def registrarCliente(request):
@@ -110,8 +110,9 @@ def registrarCliente(request):
             cliente.correo = form.cleaned_data['correo']
 
             cliente.save()
+            return redirect('registrarReserva')
     
         else:
             print("Invalido")
 
-    return render(request, 'formReserva.html', {'form': form})
+    return render(request, 'clienteForms.html', {'form': form})

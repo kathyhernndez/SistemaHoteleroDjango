@@ -15,4 +15,4 @@ class ClienteForm(forms.Form):
    nombre = forms.CharField(label="Nombre", required=True)
    apellido = forms.CharField(label="Apellido", required=True)
    telefono = forms.CharField(label="Telefono", required=True)
-   correo = forms.CharField(label="Telefono", required=True)
+   correo = forms.CharField(label="Correo", required=True)
