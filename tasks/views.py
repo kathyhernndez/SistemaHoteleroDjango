@@ -32,9 +32,6 @@ def signup(request):
 def home(request):
     return render(request, 'home.html')
     
-@login_required
-def administracion(request):
-    return render(request, 'administracion.html')
 
 @login_required
 def signout(request):
