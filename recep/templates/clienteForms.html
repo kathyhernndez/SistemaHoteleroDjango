@@ -14,12 +14,12 @@
       {% csrf_token %} 
 
       {{ form }}
-        
+      <div clas="form-group mx-2 py-0">
+        <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
+        <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar</button>
+      </div>
     </form>
-    <div clas="form-group mx-2 py-0">
-      <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
-      <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar</button>
-    </div>
+   
 </div>
 
 {% endblock %}

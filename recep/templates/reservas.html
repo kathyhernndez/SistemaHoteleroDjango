@@ -27,15 +27,16 @@
                     {% for reserva in reserva %}
                      <tr>
                       <td>{{ reserva.fechaEntrada}}</td>
-                      <td>Numero: {{ reserva.habitacion.numero}} <br> Tipo: {{ reserva.habitacion.tipo}} </td>
+                      <td> <strong> Numero: </strong> {{ reserva.habitacion.numero}} <br> <strong>Tipo: </strong>  {{ reserva.habitacion.tipo}} </td>
                       <td>{{ reserva.importe}}</td>
                       <td>{{ reserva.metodoPago}}</td>
                       <td>{{ reserva.moneda}}</td>
-                      <td>{{ reserva.cliente.nombre}}</td>
-                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning">Actualizar Reserva</a></td>
+                      <td>{{ reserva.cliente.cedula}}</td>
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning btn-sm">Actualizar Reserva</a></td>
                       <!-- Button trigger modal -->
 <td>
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Eliminar Reserva
 </button>
 
@@ -57,6 +58,7 @@
   </div>
 </div>
 </td>
+</div>
                      </tr>
                      {% endfor %}
                   </tbody>

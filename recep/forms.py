@@ -7,7 +7,7 @@ class ReservaForm(forms.Form):
    importe = forms.FloatField(label="Importe de Pago", required=True, min_value=0.5)
    monedas = forms.ChoiceField(choices = monedas, help_text=("Ingresa el metodo de pago y la moneda utilizada, para el mismo."))
    metodoPago = forms.ChoiceField(choices = metodoPago)
-   cliente = forms.CharField(label='Cedula', max_length=9)
+   cliente = forms.ModelChoiceField(label="Clientes", queryset=Cliente.objects.all(), required=True)
 
 
 class ClienteForm(forms.Form):

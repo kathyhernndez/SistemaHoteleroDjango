@@ -39,11 +39,6 @@ def registrarReserva(request):
             reserva.monedas = form.cleaned_data['monedas']
             reserva.metodoPago = form.cleaned_data['metodoPago']
             reserva.cliente = form.cleaned_data['cliente']
-            try:
-                cliente = Cliente.objects.get(cedula=cedula)
-                return render(request, 'formReserva.html', {'cliente': cliente})
-            except Cliente.DoesNotExist:
-                return render(request, 'formReserva.html', {'mensaje': 'Cliente no registrado'})
 
             reserva.save()
             return redirect('homeReserva')
@@ -113,7 +108,6 @@ def registrarCliente(request):
             cliente.nombre = form.cleaned_data['nombre']
             cliente.apellido = form.cleaned_data['apellido']
             cliente.telefono = form.cleaned_data['telefono']
-            cliente.correo = form.cleaned_data['correo']
 
             cliente.save()
             return redirect('registrarReserva')

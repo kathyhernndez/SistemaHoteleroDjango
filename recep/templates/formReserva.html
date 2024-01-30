@@ -10,14 +10,6 @@
 <div>
   <h2> Registro de Cliente </h2>
 
-  {% if cliente %}
-    <p>Nombre: {{ cliente.nombre }} {{ cliente.apellido }}</p>
-    <!-- otros campos -->
-{% elif mensaje %}
-    <div class="alert alert-danger" role="alert">
-        {{ mensaje }}
-    </div>
-{% endif %}
 
 
 </div>
@@ -25,11 +17,13 @@
       {% csrf_token %} 
 
       {{ form.as_p }}
+      <div clas="form-group py-0"> 
+        <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
+        <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
+        <a type="button" href="{% url 'registrarCliente' %}" class="btn btn-outline-primary btn-block text-bg-black">Registrar Nuevo Cliente</a>
+      </div>
     </form>
-    <div clas="form-group py-0"> 
-      <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
-      <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
-    </div>
+    
 
 </div>
 
