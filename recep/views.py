@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 import requests
+from django.views.generic.edit import DeleteView
 from django.contrib.auth.decorators import login_required
 from django.template import Context
 from .models import Reserva, Cliente
@@ -20,33 +21,18 @@ def homeReserva(request):
 
 
 @login_required
-def registrarReserva(request):
+def registrarReserva(request, pk):
 
     form = ReservaForm()
 
-    if request.method == "POST":
-        
-        print(request.POST)
-        form = ReservaForm(request.POST) 
-
+    if request.method == 'POST':
+        form = ReservaForm(request.POST)
         if form.is_valid():
-            print("Valido")
-            
-            reserva = Reserva()
-
-            reserva.habitacion = form.cleaned_data['habitacion']
-            reserva.importe = form.cleaned_data['importe']
-            reserva.monedas = form.cleaned_data['monedas']
-            reserva.metodoPago = form.cleaned_data['metodoPago']
-            reserva.cliente = form.cleaned_data['cliente']
-
-            reserva.save()
+            form.save()
             return redirect('homeReserva')
-
-        else:
-            print("Invalido")
-
-    return render(request, 'formReserva.html', {'form': form})
+    else:
+        form = ReservaForm(initial={'habitacion': request.GET.get('habitacion.id')})
+        return render(request, 'formReserva.html', {'form': form})
 
 
 
@@ -67,9 +53,10 @@ def editarReserva(request, pk):
 
             reserva.habitacion = form.cleaned_data['habitacion']
             reserva.importe = form.cleaned_data['importe']
-            reserva.monedas = form.cleaned_data['monedas']
+            reserva.moneda = form.cleaned_data['moneda']
             reserva.metodoPago = form.cleaned_data['metodoPago']
             reserva.cliente = form.cleaned_data['cliente']
+            reserva.tiempoEstadia = form.cleaned_data['tiempoEstadia']
             
 
             reserva.save()
@@ -83,8 +70,8 @@ def editarReserva(request, pk):
 
 
 @login_required
-def eliminarReserva(request, id):
-    reserva = Reserva.objects.get(id=id)
+def eliminarReserva(request, pk):
+    reserva = Reserva.objects.get(pk=id)
     reserva.delete()
     return redirect('homeReserva')
 

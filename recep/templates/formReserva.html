@@ -4,20 +4,21 @@
 {% block title %} CheckIn {% endblock%}
 
 {% block content %}
-
+{% load crispy_forms_tags %}
 <div class="container-fluid mx-2 py-3"> 
   
 <div>
-  <h2> Registro de Cliente </h2>
+  <h2> Registro de Reserva </h2>
 
 
 
 </div>
-    <form class="container-fluid py-5 form-group-lg" action="" method="POST">
+    <form class="container-fluid mx-2 py-3" action="" method="POST">
       {% csrf_token %} 
 
-      {{ form.as_p }}
-      <div clas="form-group py-0"> 
+      {{ form| crispy }}
+
+      <div clas="form-group py-3"> 
         <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
         <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
         <a type="button" href="{% url 'registrarCliente' %}" class="btn btn-outline-primary btn-block text-bg-black">Registrar Nuevo Cliente</a>

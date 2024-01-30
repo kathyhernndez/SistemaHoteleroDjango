@@ -6,7 +6,7 @@ class Habitacion(models.Model):
     id = models.AutoField(primary_key=True)
     numero = models.CharField(max_length=3, unique=True)
     estado = models.CharField(max_length=50, choices=estados)
-    precio = models.FloatField(max_length=10)
+    precio = models.DecimalField(max_digits=6, decimal_places=2)
     tipo = models.CharField(max_length=50, choices=tipos)
 
 

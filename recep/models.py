@@ -24,7 +24,8 @@ class Reserva(models.Model):
     fechaEntrada = models.DateTimeField(auto_now_add=True, verbose_name="CheckIn")
     fechaSalida = models.DateTimeField(null=True, blank=True, verbose_name="CheckOut")
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
-    importe = models.FloatField(max_length=10)
+    importe = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    tiempoEstadia = models.PositiveIntegerField(verbose_name="Dias de Estadia", null=True)
     metodoPago = models.CharField(max_length=100, choices=metodoPago, default="Divisas")
     moneda = models.CharField(max_length=100, choices=monedas, default="Dolares")
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
@@ -34,5 +35,11 @@ class Reserva(models.Model):
 
     def __str__(self):
         return self.detallesReserva()
+    
+    def save(self, *args, **kwargs):
+        # Actualiza el estado de la habitación a "ocupado"
+        self.habitacion.estado = 'ocupado'
+        self.habitacion.save()
+        super().save(*args, **kwargs)
 
 

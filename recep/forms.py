@@ -1,13 +1,20 @@
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 from .choices import *
 from recep.models import *
 
-class ReservaForm(forms.Form):
-   habitacion = forms.ModelChoiceField(label="Habitacion", queryset=Habitacion.objects.all(), required=True)
-   importe = forms.FloatField(label="Importe de Pago", required=True, min_value=0.5)
-   monedas = forms.ChoiceField(choices = monedas, help_text=("Ingresa el metodo de pago y la moneda utilizada, para el mismo."))
-   metodoPago = forms.ChoiceField(choices = metodoPago)
-   cliente = forms.ModelChoiceField(label="Clientes", queryset=Cliente.objects.all(), required=True)
+class ReservaForm(forms.ModelForm):
+    class Meta:
+        model = Reserva
+        fields = ['habitacion', 'cliente', 'importe', 'metodoPago', 'moneda', 'tiempoEstadia']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 
 class ClienteForm(forms.Form):

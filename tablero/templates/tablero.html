@@ -25,7 +25,7 @@
           <p class="card-title"><strong>Precio: </strong> {{ habitacion.precio }}</p>
           <p class="card-text"><strong>Estado: </strong> {% if habitacion.estado == 'Disponible' %}<span class="text-success">Disponible</span>{% else %}<span class="text-danger">{{ habitacion.estado }}</span>{% endif %}</p>
         </div>
-        <a class="btn btn-outline-success" href="{% url 'registrarReserva' %}" role="button">CheckIn</a>
+        <a class="btn btn-outline-success" href="{% url 'registrarReserva' habitacion.id %}" role="button">CheckIn</a>
         <a class="btn btn-outline-danger" href="#" role="button">CheckOut</a>
 
 <!-- Button trigger modal -->

@@ -19,6 +19,8 @@
                           <th>Importe</th>
                           <th>Metodo de Pago</th>
                           <th>Moneda</th>
+                          <th>CheckOut</th>
+                          <th>Estadia</th>
                           <th>Cliente</th>
                           <th colspand="3">Opciones</th>
                       </tr>
@@ -31,6 +33,8 @@
                       <td>{{ reserva.importe}}</td>
                       <td>{{ reserva.metodoPago}}</td>
                       <td>{{ reserva.moneda}}</td>
+                      <td>{{ reserva.fechaSalida}}</td>
+                      <td>{{ reserva.tiempoEstadia}} Dias.</td>
                       <td>{{ reserva.cliente.cedula}}</td>
                       <div class="btn-group" role="group" aria-label="Basic example">
                       <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning btn-sm">Actualizar Reserva</a></td>
