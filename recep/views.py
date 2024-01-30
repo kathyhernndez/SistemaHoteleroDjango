@@ -28,7 +28,7 @@ def homeReserva(request):
 
 
 @login_required
-def registrarReserva(request, pk):
+def registrarReserva(request):
 
     form = ReservaForm()
 
@@ -109,5 +109,4 @@ def registrarCliente(request):
         if form.is_valid():
             form.save()
             return redirect('registrarReserva')
-    else:
-        return render(request, 'clienteForms.html', {'form': form})
+    return render(request, 'clienteForms.html', {'form': form})

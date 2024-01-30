@@ -26,7 +26,7 @@
           <p class="card-text"><strong>Estado: </strong> {% if habitacion.estado == 'Disponible' %}<span class="text-success">Disponible</span>{% else %}<span class="text-danger">{{ habitacion.estado }}</span>{% endif %}</p>
           <p class="card-title"><strong>Reserva Activa: </strong> {{ habitacion.reserva.id }}</p>
         </div>
-        <a class="btn btn-outline-success" href="{% url 'registrarReserva' habitacion.id %}" role="button">CheckIn</a>
+        <a class="btn btn-outline-success" href="{% url 'registrarReserva'%}" role="button">CheckIn</a>
         <a class="btn btn-outline-warning" href="{% url 'eliminarHabitacion' habitacion.id %}" data-toggle="modal" data-target="#confirmar_eliminar">Eliminar</a>
                       
         <div class="modal fade" id="confirmar_eliminar" tabindex="-1" role="dialog" aria-labelledby="confirmar_eliminar_label" aria-hidden="true">
