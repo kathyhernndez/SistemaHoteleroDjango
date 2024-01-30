@@ -21,15 +21,14 @@
 
 
 </div>
-    <form class="container-fluid py-5 form-group-lg"action="" method="POST">
+    <form class="container-fluid py-5 form-group-lg" action="" method="POST">
       {% csrf_token %} 
 
       {{ form.as_p }}
     </form>
     <div clas="form-group py-0"> 
-      <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar</button>
+      <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
       <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
-      <td><a href="{% url 'registrarCliente' %}" type="button" class="btn btn-outline-success btn-block text-bg-black">Registrar Cliente</a></td>
     </div>
 
 </div>

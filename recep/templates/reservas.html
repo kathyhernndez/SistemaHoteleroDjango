@@ -24,18 +24,18 @@
                       </tr>
                   </thead>
                   <tbody>
-                    {% for reserva in reservaList %}
+                    {% for reserva in reserva %}
                      <tr>
                       <td>{{ reserva.fechaEntrada}}</td>
-                      <td>{{ reserva.habitacion}}</td>
+                      <td>Numero: {{ reserva.habitacion.numero}} <br> Tipo: {{ reserva.habitacion.tipo}} </td>
                       <td>{{ reserva.importe}}</td>
                       <td>{{ reserva.metodoPago}}</td>
                       <td>{{ reserva.moneda}}</td>
-                      <td>{{ reserva.cliente}}</td>
+                      <td>{{ reserva.cliente.nombre}}</td>
                       <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning">Actualizar Reserva</a></td>
                       <!-- Button trigger modal -->
 <td>
-<button type="button" class="btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Eliminar Reserva
 </button>
 

@@ -11,10 +11,9 @@ from .forms import ReservaForm, ClienteForm
 
 @login_required
 def homeReserva(request):
-    response = requests.get('http://127.0.0.1:8000/api/reservas/')
-    responseList = response.json()
-    reservaList = responseList
-    contexto  = {"reservaList": reservaList}
+    reserva = Reserva.objects.all()
+    
+    contexto  = {"reserva": reserva}
     
     return render(request,"reservas.html", contexto)
 
@@ -22,8 +21,10 @@ def homeReserva(request):
 
 @login_required
 def registrarReserva(request):
+
+    form = ReservaForm()
+
     if request.method == "POST":
-        form = ReservaForm()
         
         print(request.POST)
         form = ReservaForm(request.POST) 
@@ -60,7 +61,7 @@ def editarReserva(request, pk):
     
     reserva = get_object_or_404(Reserva, id=pk)
 
-    form = ReservaForm(initial={'habitacion': reserva.habitacion, 'importe': reserva.importe, 'monedas': reserva.moneda, 'metodoPago': reserva.metodoPago, 'cliente': reserva.cliente, 'user': reserva.user})
+    form = ReservaForm(initial={'habitacion': reserva.habitacion, 'importe': reserva.importe, 'monedas': reserva.moneda, 'metodoPago': reserva.metodoPago, 'cliente': reserva.cliente})
 
     if request.method == "POST":
         print(request.POST)
@@ -74,7 +75,7 @@ def editarReserva(request, pk):
             reserva.monedas = form.cleaned_data['monedas']
             reserva.metodoPago = form.cleaned_data['metodoPago']
             reserva.cliente = form.cleaned_data['cliente']
-            reserva.user = form.cleaned_data['user']
+            
 
             reserva.save()
             return redirect('homeReserva')
@@ -99,6 +100,7 @@ def registrarCliente(request):
     form = ClienteForm()
 
     if request.method == "POST":
+
         print(request.POST)
         form = ClienteForm(request.POST) 
 
