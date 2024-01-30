@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 import requests
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.views.generic.edit import DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.template import Context
@@ -72,8 +73,13 @@ def editarReserva(request, pk):
 @login_required
 def eliminarReserva(request, id):
     reserva = Reserva.objects.get(id=id)
-    reserva.delete()
-    return redirect('appTablero')
+    if request.method == 'POST':
+        reserva.delete()
+        messages.success(request, 'La Reserva ha sido eliminada.')
+        return redirect('homeReserva')
+    context = {'reserva': reserva}
+    return render(request, 'eliminarReserva.html', context)
+
 
 @login_required
 class CheckoutView(UpdateView):

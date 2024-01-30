@@ -27,8 +27,27 @@
         </div>
         <a class="btn btn-outline-success" href="{% url 'registrarReserva' habitacion.id %}" role="button">CheckIn</a>
         <a class="btn btn-outline-danger" href="{% url 'CheckoutView' habitacion.id %}" role="button">CheckOut</a>
-        <a href="{% url 'eliminarHabitacion' habitacion.id %}" type="button" class="btn btn-outline-warning">Eliminar Habitacion</a> 
-
+        <a class="btn btn-outline-warning" href="{% url 'eliminarHabitacion' habitacion.id %}" data-toggle="modal" data-target="#confirmar_eliminar">Eliminar</a>
+                      
+        <div class="modal fade" id="confirmar_eliminar" tabindex="-1" role="dialog" aria-labelledby="confirmar_eliminar_label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="confirmar_eliminar_label">Confirmar eliminación</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <p>¿Estás seguro de que deseas eliminar la habitacion "{{ habitacion.id }}"?</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-danger">Eliminar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
       </div>
     </div>
     {% endfor %}

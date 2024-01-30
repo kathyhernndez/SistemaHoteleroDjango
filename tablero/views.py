@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, FormView, View, DeleteView
 from django.urls import reverse, reverse_lazy
+from django.contrib import messages
 import requests
 import pymsgbox
 from django.template import Context
@@ -39,6 +40,10 @@ def registrarHabitacion(request):
 @login_required
 def eliminarHabitacion(request, id):
     habitacion = Habitacion.objects.get(id=id)
-    habitacion.delete()
-    return redirect('appTablero')
+    if request.method == 'POST':
+        habitacion.delete()
+        messages.success(request, 'La Habitacion ha sido eliminada.')
+        return redirect('appTablero')
+    context = {'habitacion': habitacion}
+    return render(request, 'eliminarHabitacion.html', context)
 
