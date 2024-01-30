@@ -2,6 +2,7 @@
 {% extends 'base.html' %}
 
 {% block title %} Tablero Habitaciones {% endblock%}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -10,8 +11,9 @@
 
     <form action="" method="POST">{% csrf_token %}
 
-      {{ form }}
-      <div class="form-group mx-2 py-0">
+      {{ form| crispy }}
+
+      <div class="form-group mx-2 py-2">
         <button type="submit" id="liveAlertBtn" class="btn btn-outline-success btn-block text-bg-black">Crear Habitacion</button>
         <a type="button" href="http://127.0.0.1:8000/tablero/appTablero" class="btn btn-outline-success btn-block text-bg-black">Regresar al Tablero</a>
       </div>

@@ -1,14 +1,21 @@
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 from .choices import *
 from tablero.models import *
 
 
 from django.forms import ModelForm
 
-class HabitacionForm(forms.Form):
-   precio = models.FloatField(max_length=10)
-   tipo = models.CharField(choices=tipos, default="Doble Individual")
-   numero = forms.IntegerField(label="Numero de Habitacion")
-   estado = forms.ChoiceField( choices = estados)
+class HabitacionForm(forms.ModelForm):
+    class Meta:
+        model = Habitacion
+        fields = ['numero', 'estado', 'precio', 'tipo']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Guardar'))
    
 

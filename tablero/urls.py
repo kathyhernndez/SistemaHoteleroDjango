@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import appTablero, registrarHabitacion, eliminarHabitacion, editarHabitacion
+from .views import appTablero, registrarHabitacion, eliminarHabitacion
 
 urlpatterns = [
     ## URLS DE PANEL DE HABITACIONES
@@ -9,6 +9,5 @@ urlpatterns = [
      #URL CRUD ACTUALIZAR, LEER, CREAR ELIMINAR,
     path('registrarHabitacion/', views.registrarHabitacion, name='registrarHabitacion'),
     path('eliminarHabitacion/<int:id>', views.eliminarHabitacion, name='eliminarHabitacion'),
-    path('editarHabitacion/<int:pk>', views.editarHabitacion, name='editarHabitacion'),    
 ]
 
