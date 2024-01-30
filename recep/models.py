@@ -23,15 +23,14 @@ class Reserva(models.Model):
     id = models.AutoField(primary_key=True)
     fechaEntrada = models.DateTimeField(auto_now_add=True, verbose_name="CheckIn")
     fechaSalida = models.DateTimeField(null=True, blank=True, verbose_name="CheckOut")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
-    importe = models.FloatField(max_length=200)
+    importe = models.FloatField(max_length=10)
     metodoPago = models.CharField(max_length=100, choices=metodoPago, default="Divisas")
     moneda = models.CharField(max_length=100, choices=monedas, default="Dolares")
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
     def detallesReserva(self):
-        return "{}, {}, {}, {}, {}, {}, {}, {}".format(self.fechaEntrada, self.fechaSalida, self.user, self.habitacion, self.importe, self.metodoPago, self.moneda, self.cliente)
+        return "{}, {}, {}, {}, {}, {}, {}".format(self.fechaEntrada, self.fechaSalida,  self.habitacion, self.importe, self.metodoPago, self.moneda, self.cliente)
 
     def __str__(self):
         return self.detallesReserva()

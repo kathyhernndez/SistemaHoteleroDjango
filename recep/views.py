@@ -22,9 +22,9 @@ def homeReserva(request):
 
 @login_required
 def registrarReserva(request):
-    form = ReservaForm()
-
     if request.method == "POST":
+        form = ReservaForm()
+        
         print(request.POST)
         form = ReservaForm(request.POST) 
 
@@ -38,7 +38,11 @@ def registrarReserva(request):
             reserva.monedas = form.cleaned_data['monedas']
             reserva.metodoPago = form.cleaned_data['metodoPago']
             reserva.cliente = form.cleaned_data['cliente']
-            reserva.user = form.cleaned_data['user']
+            try:
+                cliente = Cliente.objects.get(cedula=cedula)
+                return render(request, 'formReserva.html', {'cliente': cliente})
+            except Cliente.DoesNotExist:
+                return render(request, 'formReserva.html', {'mensaje': 'Cliente no registrado'})
 
             reserva.save()
             return redirect('homeReserva')

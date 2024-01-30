@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from recep.models import Reserva, Cliente
-from tablero.models import Habitacion, TipoHabitacion
+from tablero.models import Habitacion
 
 ##### serializers de la app recep ############
 
@@ -23,7 +23,3 @@ class HabitacionSerializer(serializers.ModelSerializer):
         model = Habitacion
         fields = '__all__'
 
-class TipoHabitacionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TipoHabitacion
-        fields = '__all__'

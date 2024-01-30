@@ -36,7 +36,7 @@ def registrarHabitacion(request):
 
             habitacion.numero = form.cleaned_data['numero']
             habitacion.estado = form.cleaned_data['estado']
-            habitacion.id_tipoHabitacion = form.cleaned_data['id_tipoHabitacion']
+            habitacion.tipoHabitacion = form.cleaned_data['tipoHabitacion']
 
             habitacion.save()
     
@@ -52,7 +52,7 @@ def editarHabitacion(request, pk):
     
     habitacion = get_object_or_404(Habitacion, id=pk)
 
-    form = HabitacionForm(initial={'numero':habitacion.numero,'estado':habitacion.estado, 'id_tipoHabitacion': habitacion.id_tipoHabitacion})
+    form = HabitacionForm(initial={'numero':habitacion.numero,'estado':habitacion.estado, 'tipoHabitacion': habitacion.tipoHabitacion})
 
     if request.method == "POST":
         print(request.POST)
@@ -63,10 +63,10 @@ def editarHabitacion(request, pk):
 
             habitacion.numero = form.cleaned_data['numero']
             habitacion.estado = form.cleaned_data['estado']
-            habitacion.id_tipoHabitacion = form.cleaned_data['id_tipoHabitacion']
+            habitacion.tipoHabitacion = form.cleaned_data['tipoHabitacion']
 
             habitacion.save()
-            return redirect('appTablero')
+            
     
         else:
             print("Invalido")
@@ -80,27 +80,3 @@ def eliminarHabitacion(request, id):
     habitacion.delete()
     return redirect('appTablero')
 
-@login_required
-def crearTipo(request):
-    form = TipoHabitacionForm()
-
-    if request.method == "POST":
-        print(request.POST)
-        form = TipoHabitacionForm(request.POST) 
-
-        if form.is_valid():
-            print("Valido")
-            
-            tipoHabitacion = TipoHabitacion()
-
-            tipoHabitacion.tipo = form.cleaned_data['tipo']
-            tipoHabitacion.precio = form.cleaned_data['precio']
-            tipoHabitacion.descripcion = form.cleaned_data['descripcion']
-
-            tipoHabitacion.save()
-            return redirect('registrarHabitacion')
-    
-        else:
-            print("Invalido")
-
-    return render(request, 'tipoforms.html', {'form': form})

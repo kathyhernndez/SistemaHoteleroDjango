@@ -9,11 +9,22 @@
   
 <div>
   <h2> Registro de Cliente </h2>
+
+  {% if cliente %}
+    <p>Nombre: {{ cliente.nombre }} {{ cliente.apellido }}</p>
+    <!-- otros campos -->
+{% elif mensaje %}
+    <div class="alert alert-danger" role="alert">
+        {{ mensaje }}
+    </div>
+{% endif %}
+
+
 </div>
     <form class="container-fluid py-5 form-group-lg"action="" method="POST">
       {% csrf_token %} 
 
-      {{ form }}
+      {{ form.as_p }}
     </form>
     <div clas="form-group py-0"> 
       <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar</button>
