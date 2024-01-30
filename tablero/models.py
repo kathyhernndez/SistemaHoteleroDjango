@@ -1,5 +1,4 @@
 from django.db import models
-
 from .choices import tipos, estados
 
 class Habitacion(models.Model):

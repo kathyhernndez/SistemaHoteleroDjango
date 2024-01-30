@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tablero.models import Habitacion
+from django.utils import timezone
 
 from .choices import *
 
@@ -38,8 +39,18 @@ class Reserva(models.Model):
     
     def save(self, *args, **kwargs):
         # Actualiza el estado de la habitación a "ocupado"
-        self.habitacion.estado = 'ocupado'
+        self.habitacion.estado = 'Ocupado'
         self.habitacion.save()
         super().save(*args, **kwargs)
 
+#Checkout
+    def liberarReserva(self, *args, **kwargs):
+        self.fechaSalida = timezone.now()
+        self.save()
+
+    def liberar(self, *args, **kwargs):
+        # Actualiza el estado de la habitación a "ocupado"
+        self.habitacion.estado = 'Disponible'
+        self.habitacion.save()
+        super().save(*args, **kwargs)
 

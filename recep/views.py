@@ -9,6 +9,10 @@ from .models import Reserva, Cliente
 from tablero.models import Habitacion
 from api.views import ReservaViewSet
 from .forms import ReservaForm, ClienteForm
+import datetime
+import pytz
+
+utc_time = datetime.datetime.now(pytz.utc)
 
 
 # Create your views here.
@@ -82,18 +86,12 @@ def eliminarReserva(request, id):
 
 
 @login_required
-class CheckoutView(UpdateView):
-    model = Reserva
-    fields = ['fechaSalida']
-    template_name_suffix = '_checkout_form'
-    success_url = reverse_lazy('homeReserva')
+def liberarReserva(request, id):
+    reserva = get_object_or_404(Reserva, id=id)
+    reserva.liberarReserva()
+    reserva.liberar()
+    return redirect('homeReserva')
 
-    def form_valid(self, form):
-        reserva = form.save(commit=False)
-        reserva.habitacion.estado = 'Disponible'
-        reserva.habitacion.save()
-        reserva.save()
-        return super().form_valid(form)
 
 
 

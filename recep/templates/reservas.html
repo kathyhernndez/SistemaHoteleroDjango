@@ -39,8 +39,9 @@
                       <td>{{ reserva.tiempoEstadia}} Dias.</td>
                       <td>{{ reserva.cliente.cedula}}</td>
                       <div class="btn-group" role="group" aria-label="Basic example">
-                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning btn-sm">Actualizar</a></td>
-                      <td><a href="{% url 'eliminarReserva' reserva.id %}" data-toggle="modal" data-target="#confirmar_eliminar">Eliminar</a></td>
+                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-outline-warning btn-sm">Actualizar</a></td>
+                      <td><a class="btn btn-outline-danger btn-sm" href="{% url 'liberarReserva' reserva.id %}" role="button">CheckOut</a></td>
+                      <td><a class="btn btn-outline-primary btn-sm" href="{% url 'eliminarReserva' reserva.id %}" data-toggle="modal" data-target="#confirmar_eliminar">Eliminar</a></td>
                       
                       <div class="modal fade" id="confirmar_eliminar" tabindex="-1" role="dialog" aria-labelledby="confirmar_eliminar_label" aria-hidden="true">
                         <div class="modal-dialog" role="document">
