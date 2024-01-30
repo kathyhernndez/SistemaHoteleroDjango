@@ -36,7 +36,7 @@ def registrarHabitacion(request):
 
 
 
-
+@login_required
 def eliminarHabitacion(request, id):
     habitacion = Habitacion.objects.get(id=id)
     habitacion.delete()

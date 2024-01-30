@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 import requests
-from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.template import Context
 from .models import Reserva, Cliente
+from tablero.models import Habitacion
 from api.views import ReservaViewSet
 from .forms import ReservaForm, ClienteForm
 
@@ -67,13 +69,25 @@ def editarReserva(request, pk):
         
     return render(request, 'formReserva.html', {'form': form})
 
-
+@login_required
+def eliminarReserva(request, id):
+    reserva = Reserva.objects.get(id=id)
+    reserva.delete()
+    return redirect('appTablero')
 
 @login_required
-def eliminarReserva(request, pk):
-    reserva = Reserva.objects.get(pk=id)
-    reserva.delete()
-    return redirect('homeReserva')
+class CheckoutView(UpdateView):
+    model = Reserva
+    fields = ['fechaSalida']
+    template_name_suffix = '_checkout_form'
+    success_url = reverse_lazy('homeReserva')
+
+    def form_valid(self, form):
+        reserva = form.save(commit=False)
+        reserva.habitacion.estado = 'Disponible'
+        reserva.habitacion.save()
+        reserva.save()
+        return super().form_valid(form)
 
 
 

@@ -22,3 +22,4 @@ class ClienteForm(forms.Form):
    nombre = forms.CharField(label="Nombre y Apellido", required=True, help_text=("Los datos como nombre, apellido y cedula son necesarios para indentificar a los clientes."))
    apellido = forms.CharField(required=True)
    telefono = forms.CharField(label="Telefono", required=True)
+   

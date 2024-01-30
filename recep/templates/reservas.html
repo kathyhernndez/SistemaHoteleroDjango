@@ -11,9 +11,10 @@
             <div class="row py-4">
               <h1>Listado de Reservas 
           </div>
-              <table class="table table-striped py-7">
+              <table class="table table-striped py-5">
                   <thead>
                       <tr>
+                        <th>Id</th>
                           <th>CheckIn</th>
                           <th>Habitacion</th>
                           <th>Importe</th>
@@ -28,6 +29,7 @@
                   <tbody>
                     {% for reserva in reserva %}
                      <tr>
+                      <td>{{ reserva.id}}</td>
                       <td>{{ reserva.fechaEntrada}}</td>
                       <td> <strong> Numero: </strong> {{ reserva.habitacion.numero}} <br> <strong>Tipo: </strong>  {{ reserva.habitacion.tipo}} </td>
                       <td>{{ reserva.importe}}</td>
@@ -37,32 +39,9 @@
                       <td>{{ reserva.tiempoEstadia}} Dias.</td>
                       <td>{{ reserva.cliente.cedula}}</td>
                       <div class="btn-group" role="group" aria-label="Basic example">
-                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning btn-sm">Actualizar Reserva</a></td>
-                      <!-- Button trigger modal -->
-<td>
-<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Eliminar Reserva
-</button>
+                      <td><a href="{% url 'editarReserva' reserva.id %}" type="button" class="btn btn-warning btn-sm">Actualizar</a></td>
+                      <td><a href="{% url 'eliminarReserva' reserva.id %}" type="button" class="btn btn-danger btn-sm">Eliminar</a></td>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">¿Seguro que quieres eliminar esta Reserva?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Al eliminar la reserva, quedaran borrados todos los datos relacionados con esta reserva. 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <a href="{% url 'eliminarReserva' reserva.id %}" type="button" class="btn btn-primary">Confirmar</a>      </div>
-    </div>
-  </div>
-</div>
-</td>
-</div>
                      </tr>
                      {% endfor %}
                   </tbody>
