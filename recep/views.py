@@ -87,37 +87,27 @@ def eliminarReserva(request, id):
 
 @login_required
 def liberarReserva(request, id):
-    reserva = get_object_or_404(Reserva, id=id)
-    reserva.liberarReserva()
-    reserva.liberar()
-    return redirect('homeReserva')
+    reserva = Reserva.objects.get(id=id)
+    if request.method == 'POST':
+        reserva.liberarReserva()
+        reserva.liberar()
+        messages.success(request, 'La Reserva ha sido liberada.')
+        return redirect('homeReserva')
+    context = {'reserva': reserva}
+    return render(request, 'confirmarCheck.html', context)
 
 
 
 
 @login_required
 def registrarCliente(request):
+
     form = ClienteForm()
 
-    if request.method == "POST":
-
-        print(request.POST)
-        form = ClienteForm(request.POST) 
-
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
         if form.is_valid():
-            print("Valido")
-            
-            cliente = Cliente()
-
-            cliente.cedula = form.cleaned_data['cedula']
-            cliente.nombre = form.cleaned_data['nombre']
-            cliente.apellido = form.cleaned_data['apellido']
-            cliente.telefono = form.cleaned_data['telefono']
-
-            cliente.save()
+            form.save()
             return redirect('registrarReserva')
-    
-        else:
-            print("Invalido")
-
-    return render(request, 'clienteForms.html', {'form': form})
+    else:
+        return render(request, 'clienteForms.html', {'form': form})

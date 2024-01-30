@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} CheckIn {% endblock%}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<form action="{% url 'liberarReserva' reserva.id %}" method="POST">
+    {% csrf_token %}
+    <h3>¿Estás seguro de que deseas liberar la reserva "{{ reserva.id }}"?</h3>
+    <button type="submit" class="btn btn-danger">CheckOut</button>
+    <a href="{% url 'homeReserva' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+ 
+{% endblock %}
