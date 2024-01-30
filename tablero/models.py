@@ -4,7 +4,7 @@ from .choices import tipos, estados
 
 class Habitacion(models.Model):
     id = models.AutoField(primary_key=True)
-    numero = models.IntegerField(max_length=3, unique=True)
+    numero = models.CharField(max_length=3, unique=True)
     estado = models.CharField(max_length=50, choices=estados)
     precio = models.FloatField(max_length=10)
     tipo = models.CharField(max_length=50, choices=tipos)
