@@ -9,11 +9,11 @@ from .choices import *
 
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
-    cedula = models.CharField(max_length=50, unique=True)
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=50)
-    correo = models.CharField(max_length=100)
+    cedula = models.IntegerField(max_length=9, unique=True)
+    nombre = models.CharField(max_length=15)
+    apellido = models.CharField(max_length=15)
+    telefono = models.CharField(max_length=12)
+    correo = models.EmailField(max_length=50)
 
     def __str__(self):
         txt = "{0} {1}, Cedula: V-{2}"
@@ -24,12 +24,12 @@ class Reserva(models.Model):
     id = models.AutoField(primary_key=True)
     fechaEntrada = models.DateTimeField(auto_now_add=True, verbose_name="CheckIn")
     fechaSalida = models.DateTimeField(null=True, blank=True, verbose_name="CheckOut")
-    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
-    importe = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    tiempoEstadia = models.PositiveIntegerField(verbose_name="Dias de Estadia", null=True)
-    metodoPago = models.CharField(max_length=100, choices=metodoPago, default="Divisas")
-    moneda = models.CharField(max_length=100, choices=monedas, default="Dolares")
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE, verbose_name="Selecciona la habitacion",)
+    importe = models.DecimalField(max_digits=6, decimal_places=2, null=True, verbose_name="Importe de Pago de la Reserva")
+    tiempoEstadia = models.PositiveIntegerField(max_length=2, verbose_name="Dias de Estadia del Cliente", null=True)
+    metodoPago = models.CharField(choices=metodoPago, default="Divisas", verbose_name="Metodo de Pago Utilizado",)
+    moneda = models.CharField(choices=monedas, default="Dolares", verbose_name="Moneda Utilizada para el pago de la Reserva")
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Selecciona el cliente. Si el cliente no encuentra registrado, haz click en registrar cliente, para registrar uno nuevo.")
 
     def detallesReserva(self):
         return "{}, {}, {}, {}, {}, {}, {}".format(self.fechaEntrada, self.fechaSalida,  self.habitacion, self.importe, self.metodoPago, self.moneda, self.cliente)

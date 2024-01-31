@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import View
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator # Permite usar decoradores
 
 from .forms import RegisterForm, LoginForm, UpdateUserForm
 
@@ -38,6 +39,7 @@ class RegisterView(View):
 
 
 # Class based view that extends from the built in login view to add a remember me functionality
+
 class CustomLoginView(LoginView):
     form_class = LoginForm
 

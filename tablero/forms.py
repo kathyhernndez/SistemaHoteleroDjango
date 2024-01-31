@@ -10,7 +10,7 @@ from django.forms import ModelForm
 class HabitacionForm(forms.ModelForm):
     class Meta:
         model = Habitacion
-        fields = ['numero', 'estado', 'precio', 'tipo']
+        fields = ['numero', 'estado', 'precio', 'moneda', 'tipo' ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
