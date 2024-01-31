@@ -17,6 +17,10 @@
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a href=" {% url 'appTablero' %} " class="nav-link">Panel de Habitaciones</a>
+        </li>
+        <li class="nav-item">
+          <a href="/register" class="nav-link">Registrar usuario</a>
+        </li>
         <li class="nav-item">
           <a href="{% url 'homeReserva' %}" class="nav-link">Panel de Recepcion</a>
         </li>
