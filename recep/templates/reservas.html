@@ -14,11 +14,10 @@
               <table class="table table-striped py-5">
                   <thead>
                       <tr>
-                        <th>Id</th>
                           <th>CheckIn</th>
                           <th>Habitacion</th>
                           <th>Importe</th>
-                          <th>Metodo de Pago</th>
+                          <th>Metodo Pago</th>
                           <th>Moneda</th>
                           <th>CheckOut</th>
                           <th>Estadia</th>
@@ -29,7 +28,6 @@
                   <tbody>
                     {% for reserva in reserva %}
                      <tr>
-                      <td>{{ reserva.id}}</td>
                       <td>{{ reserva.fechaEntrada}}</td>
                       <td> <strong> Numero: </strong> {{ reserva.habitacion.numero}} <br> <strong>Tipo: </strong>  {{ reserva.habitacion.tipo}} </td>
                       <td>{{ reserva.importe}}</td>
