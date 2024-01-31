@@ -9,11 +9,11 @@ from .choices import *
 
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
-    cedula = models.IntegerField(max_length=9, unique=True)
-    nombre = models.CharField(max_length=15)
-    apellido = models.CharField(max_length=15)
-    telefono = models.CharField(max_length=12)
-    correo = models.EmailField(max_length=50)
+    cedula = models.IntegerField(max_length=9, unique=True, verbose_name="Ingresa la Cedula del Cliente")
+    nombre = models.CharField(max_length=15, verbose_name="Escribe el nombre del Cliente")
+    apellido = models.CharField(max_length=15, verbose_name="Escribe el apellido del Cliente")
+    telefono = models.CharField(max_length=12, verbose_name="Ingresa el numero telefonico del Cliente")
+    correo = models.EmailField(max_length=50, verbose_name="Inngresa el correo del Cliente")
 
     def __str__(self):
         txt = "{0} {1}, Cedula: V-{2}"

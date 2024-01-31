@@ -18,10 +18,10 @@
 
       {{ form| crispy }}
 
-      <div clas="form-group py-3"> 
-        <button type="submit" class="btn btn-outline-success btn-block text-bg-black">Guardar Reserva</button>
-        <a type="button" href="http://127.0.0.1:8000/recep/homeReserva" class="btn btn-outline-success btn-block text-bg-black">Regresar al Panel</a>
-        <a type="button" href="{% url 'registrarCliente' %}" class="btn btn-outline-primary btn-block text-bg-black">Registrar Nuevo Cliente</a>
+      <div class="btn-group mx-5 py-1">
+        <a class="btn btn btn-outline-warning" href="ttp://127.0.0.1:8000/recep/homeReserva" role="button">Regresar al Panel</a>
+        <input class="btn btn-outline-success" type="submit" value="Guardar Reserva">
+        <a class="btn btn btn-outline-primary" href="{% url 'registrarCliente' %}" role="button">Registrar Nuevo Cliente</a>
       </div>
     </form>
     

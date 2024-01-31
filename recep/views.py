@@ -36,6 +36,7 @@ def registrarReserva(request):
         form = ReservaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'La Reserva ha sido creada.')
             return redirect('homeReserva')
     else:
         form = ReservaForm(initial={'habitacion': request.GET.get('habitacion.id')})
@@ -67,6 +68,7 @@ def editarReserva(request, pk):
             
 
             reserva.save()
+            messages.success(request, 'La Reserva ha sido actualizada')
             return redirect('homeReserva')
             
         else:
