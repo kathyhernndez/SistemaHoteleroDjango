@@ -59,6 +59,12 @@ class CustomLoginView(LoginView):
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'users/password_reset.html'
+    email_template_name = 'users/password_reset_email.html'
+    subject_template_name = 'users/password_reset_subject'
+    success_message = "Le hemos enviado por correo electrónico instrucciones para establecer su contraseña, " \
+                      "Si existe una cuenta con el correo electrónico que ingresó. Debería recibirlos en breve." \
+                      " Si no recibes un correo electrónico, " \
+                      "Asegúrese de haber ingresado la dirección con el que se registró y revise su carpeta de correo no deseado."
     success_url = reverse_lazy('login')
 
 
