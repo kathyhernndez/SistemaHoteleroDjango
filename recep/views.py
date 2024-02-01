@@ -81,8 +81,9 @@ def editarReserva(request, pk):
 def eliminarReserva(request, id):
     reserva = Reserva.objects.get(id=id)
     if request.method == 'POST':
-        reserva.delete()
         reserva.liberar()
+        
+        reserva.delete()
         messages.success(request, 'La Reserva ha sido eliminada.')
         return redirect('homeReserva')
     context = {'reserva': reserva}
