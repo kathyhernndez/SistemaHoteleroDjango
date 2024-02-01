@@ -65,7 +65,7 @@ def editarReserva(request, pk):
             reserva.moneda = form.cleaned_data['moneda']
             reserva.metodoPago = form.cleaned_data['metodoPago']
             reserva.cliente = form.cleaned_data['cliente']
-            reserva.tiempoEstadia = form.cleaned_data['tiempoEstadia']
+        
             
 
             reserva.save()
@@ -82,6 +82,7 @@ def eliminarReserva(request, id):
     reserva = Reserva.objects.get(id=id)
     if request.method == 'POST':
         reserva.delete()
+        reserva.liberar()
         messages.success(request, 'La Reserva ha sido eliminada.')
         return redirect('homeReserva')
     context = {'reserva': reserva}

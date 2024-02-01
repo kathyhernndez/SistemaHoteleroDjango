@@ -30,7 +30,7 @@ def registrarHabitacion(request):
         if form.is_valid():
             print("valido")
             form.save()
-            messages.success(request, 'La Hbitacion ha sido creada.')
+            messages.success(request, 'La Habitacion ha sido creada.')
             return redirect('appTablero')
         else:
             print("Invalido")
