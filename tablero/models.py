@@ -4,7 +4,7 @@ from recep.choices import monedas
 
 class Habitacion(models.Model):
     id = models.AutoField(primary_key=True)
-    numero = models.IntegerField(max_length=2, unique=True, verbose_name="Numero de Habitacion: No pueden repetirse los numeros de habitaciones ya creadas.")
+    numero = models.IntegerField(unique=True, verbose_name="Numero de Habitacion: No pueden repetirse los numeros de habitaciones ya creadas.")
     estado = models.CharField(choices=estados, default="Disponible", verbose_name="Selecciona el estado por defecto que tendra la habitacion")
     precio = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="Precio de la Habitacion")
     moneda = models.CharField(choices=monedas, default="Dolares", verbose_name="Selecciona la moneda utilizada para el precio de la habitacion")

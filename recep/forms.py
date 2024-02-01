@@ -7,7 +7,7 @@ from recep.models import *
 class ReservaForm(forms.ModelForm):
     class Meta:
         model = Reserva
-        fields = ['habitacion', 'cliente', 'importe', 'metodoPago', 'moneda', 'tiempoEstadia']
+        fields = ['habitacion', 'cliente', 'importe', 'metodoPago', 'moneda']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -38,9 +38,10 @@ def registrarReserva(request):
             form.save()
             messages.success(request, 'La Reserva ha sido creada.')
             return redirect('homeReserva')
-    else:
-        form = ReservaForm(initial={'habitacion': request.GET.get('habitacion.id')})
-        return render(request, 'formReserva.html', {'form': form})
+        else:
+            messages.success(request, 'Los datos son incorrectos.')
+    form = ReservaForm(initial={'habitacion': request.GET.get('habitacion.id')})
+    return render(request, 'formReserva.html', {'form': form})
 
 
 

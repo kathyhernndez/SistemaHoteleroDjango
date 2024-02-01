@@ -17,9 +17,9 @@
       {% csrf_token %} 
 
       {{ form| crispy }}
-
+      <p>Los campos con (*) son obligatorios</p>
       <div class="btn-group mx-5 py-1">
-        <a class="btn btn btn-outline-warning" href="ttp://127.0.0.1:8000/recep/homeReserva" role="button">Regresar al Panel</a>
+        <a class="btn btn btn-outline-warning" href="http://127.0.0.1:8000/recep/homeReserva" role="button">Regresar al Panel</a>
         <input class="btn btn-outline-success" type="submit" value="Guardar Reserva">
         <a class="btn btn btn-outline-primary" href="{% url 'registrarCliente' %}" role="button">Registrar Nuevo Cliente</a>
       </div>

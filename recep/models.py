@@ -9,7 +9,7 @@ from .choices import *
 
 class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
-    cedula = models.IntegerField(max_length=9, unique=True, verbose_name="Ingresa la Cedula del Cliente")
+    cedula = models.CharField(max_length=9, unique=True, verbose_name="Ingresa la Cedula del Cliente")
     nombre = models.CharField(max_length=15, verbose_name="Escribe el nombre del Cliente")
     apellido = models.CharField(max_length=15, verbose_name="Escribe el apellido del Cliente")
     telefono = models.CharField(max_length=12, verbose_name="Ingresa el numero telefonico del Cliente")
@@ -26,7 +26,6 @@ class Reserva(models.Model):
     fechaSalida = models.DateTimeField(null=True, blank=True, verbose_name="CheckOut")
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE, verbose_name="Selecciona la habitacion",)
     importe = models.DecimalField(max_digits=6, decimal_places=2, null=True, verbose_name="Importe de Pago de la Reserva")
-    tiempoEstadia = models.PositiveIntegerField(max_length=2, verbose_name="Dias de Estadia del Cliente", null=True)
     metodoPago = models.CharField(choices=metodoPago, default="Divisas", verbose_name="Metodo de Pago Utilizado",)
     moneda = models.CharField(choices=monedas, default="Dolares", verbose_name="Moneda Utilizada para el pago de la Reserva")
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Selecciona el cliente. Si el cliente no encuentra registrado, haz click en registrar cliente, para registrar uno nuevo.")
